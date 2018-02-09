@@ -1,0 +1,16 @@
+{
+  "name": "id-lightbox",
+  "version": "0.4.2",
+  "description": "simple lightbox plugin with no dependencies",
+  "main": "index.js",
+  "repository": "https://github.com/indranil/id-lightbox.git",
+  "author": "Indranil Dasgupta <indranild@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build src/id-lightbx.js -d dist",
+  }
+  "devDependencies": {
+    "parcel-bundler": "^1.5.1"
+  }
+}
