@@ -3,6 +3,7 @@ var rename = require('gulp-rename');
 var sass = require('gulp-ruby-sass');
 var bourbon = require('bourbon').includePaths;
 var cleanCSS = require('gulp-clean-css');
+var babel = require('gulp-babel');
 var uglify = require('gulp-uglify');
 var gutil = require('gulp-util');
 
@@ -22,9 +23,13 @@ gulp.task('minify-css', ['sass'], () =>
 );
 
 gulp.task('scripts', () =>
-  gulp.src('src/*.js')
+  gulp.src('src/id-lightbox.js')
+    .pipe(babel({
+      presets: ['env']
+    }))
     .pipe(uglify())
     .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+    .pipe(rename('id-lightbox.min.js'))
     .pipe(gulp.dest('dist'))
 );
 

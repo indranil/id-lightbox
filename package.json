@@ -1,14 +1,21 @@
 {
   "name": "id-lightbox",
   "version": "0.4.2",
+  "main": "src/id-lightbox.js",
   "description": "simple lightbox plugin with no dependencies",
-  "main": "dist/id-isotope.js",
-  "repository": "https://github.com/indranil/id-lightbox.git",
+  "keywords": [
+    "lightbox",
+    "no-dependencies"
+  ],
+  "repository": "https://github.com/indranil/id-lightbox",
   "author": "Indranil Dasgupta <indranild@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "bourbon": "^5.0.0",
     "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
     "gulp-clean-css": "^3.9.2",
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^3.0.0",
