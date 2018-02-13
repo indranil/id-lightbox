@@ -5,5 +5,13 @@
   "main": "dist/id-isotope.js",
   "repository": "https://github.com/indranil/id-lightbox.git",
   "author": "Indranil Dasgupta <indranild@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "bourbon": "^5.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^3.0.0",
+    "gulp-uglify": "^3.0.0"
+  }
 }

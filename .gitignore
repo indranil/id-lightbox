@@ -25,4 +25,4 @@ typings/
 .env
 
 .cache
-dist/
+.sass-cache

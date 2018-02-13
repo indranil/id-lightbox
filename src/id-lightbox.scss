@@ -1,0 +1,59 @@
+@import "bourbon";
+
+.id-lightbox-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  @include position(fixed, 0px 0px 0px 0px);
+  z-index: 99;
+  opacity: 0;
+  transition: all 0.4s ease-in;
+  
+  &.visible {
+    opacity: 1;
+  }
+  
+  .id-lightbox-close {
+    @include position(absolute, 10px 10px normal normal);
+    @include size(30px, 30px);
+    background: url(i/close.svg) 0 0 no-repeat;
+    background-size: 30px 30px;
+    cursor: pointer;
+  }
+  .id-lightbox-next {
+    @include position(absolute, 50% 10px normal normal);
+    @include size(30px, 30px);
+    background: url(i/next.svg) 0 0 no-repeat;
+    background-size: 30px 30px;
+    cursor: pointer;
+    margin-top: -15px;
+  }
+  .id-lightbox-prev {
+    @include position(absolute, 50% normal normal 10px);
+    @include size(30px, 30px);
+    background: url(i/prev.svg) 0 0 no-repeat;
+    background-size: 30px 30px;
+    cursor: pointer;
+    margin-top: -15px;
+  }
+} // .id-lightbox-overlay
+
+.id-lightbox-image {
+  background: #f6f6f6;
+  @include size(auto, auto);
+  max-width: 90%;
+  max-height: 90%;
+  z-index: 100;
+  @include position(fixed, 50% normal normal 50%);
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  display: none;
+  
+  &.id-lightbox-current {
+    display: block;
+    opacity: 0;
+    transition: all 0.4s ease-in;
+    &.visible {
+      opacity: 1;
+    }
+  }
+} // .id-lightbox-image
