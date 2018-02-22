@@ -1,4 +1,5 @@
-const IDLightbox = function(elems) {
+(function() {
+this.IDLightbox = function(elems) {
   this.current = -1;
   this.elems = document.querySelectorAll(elems);
   this.imgArray = new Array();
@@ -8,15 +9,13 @@ const IDLightbox = function(elems) {
   
   this.clickHandler = this.clickHandler.bind(this);
   
-  // let's go!
-  this.setupClickHandlers();
-  this.setupOverlay();
-};
-
-IDLightbox.prototype.setupClickHandlers = function () {
+  // Click Handlers
   for (let i=0; i<this.elems.length; i++) {
     this.elems[i].addEventListener('click', this.clickHandler);
   }
+  
+  // let's go!
+  this.setupOverlay();
 };
 
 IDLightbox.prototype.setupOverlay = function () {
@@ -89,3 +88,4 @@ IDLightbox.prototype.destroy = function () {
   this.imgArray = new Array();
   this.overlay.remove();
 };
+}());

@@ -22,15 +22,20 @@ gulp.task('minify-css', ['sass'], () =>
     .pipe(gulp.dest('dist'))
 );
 
-gulp.task('scripts', () =>
+gulp.task('babel', () =>
   gulp.src('src/id-lightbox.js')
     .pipe(babel({
       presets: ['env']
     }))
-    .pipe(uglify())
-    .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
-    .pipe(rename('id-lightbox.min.js'))
     .pipe(gulp.dest('dist'))
 );
 
-gulp.task('build', ['sass', 'minify-css', 'scripts']);
+gulp.task('minify-js', ['babel'], () =>
+	gulp.src('dist/id-lightbox.js')
+		.pipe(uglify())
+		.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+		.pipe(rename('id-lightbox.min.js'))
+		.pipe(gulp.dest('dist'))
+);
+
+gulp.task('default', ['sass', 'minify-css', 'babel', 'minify-js']);
