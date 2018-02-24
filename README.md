@@ -19,11 +19,11 @@ and make sure to include the css file located at `dist/id-lightbox.min.css`
 **Alternatively**, you can include the css and js files from here:
 
 ```
-https://cdn.jsdelivr.net/npm/id-lightbox@0.4.2/dist/id-lightbox.min.css
+https://cdn.jsdelivr.net/npm/id-lightbox/dist/id-lightbox.min.css
 ```
 
 ```
-https://cdn.jsdelivr.net/npm/id-lightbox@0.4.2/dist/id-lightbox.min.js
+https://cdn.jsdelivr.net/npm/id-lightbox/dist/id-lightbox.min.js
 ```
 
 #### Usage
