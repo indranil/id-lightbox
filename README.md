@@ -19,11 +19,11 @@ and make sure to include the css file located at `dist/id-lightbox.min.css`
 **Alternatively**, you can include the css and js files from here:
 
 ```
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/id-lightbox@0.4.2/dist/id-lightbox.min.css" />
+https://cdn.jsdelivr.net/npm/id-lightbox@0.4.2/dist/id-lightbox.min.css
 ```
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/id-lightbox@0.4.2/dist/id-lightbox.min.js"></script>
+https://cdn.jsdelivr.net/npm/id-lightbox@0.4.2/dist/id-lightbox.min.js
 ```
 
 #### Usage
@@ -43,3 +43,8 @@ If you have feature requests, bug reports, you know what to do.
 My main objective with this project was to create a tiny lightbox script with no frills, and most importantly, no dependencies which you can just plop in and get going with!
 
 ✌🏽
+
+### Changelog
+
+**0.5.2**: Allowing both `require` and normal linking script file
+**0.4.2**: Initial Release

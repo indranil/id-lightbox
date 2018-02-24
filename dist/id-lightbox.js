@@ -2,7 +2,7 @@
 
 (function () {
 
-  this.IDLightbox = function (elems) {
+  var IDLightbox = function IDLightbox(elems) {
     this.elems = document.querySelectorAll(elems);
     this.current = -1;
 
@@ -93,8 +93,6 @@
   IDLightbox.prototype.destroy = function (e) {
     e.preventDefault();
 
-    console.log('here');
-
     this.overlay.remove();
     this.container.remove();
 
@@ -121,4 +119,10 @@
     currentImage.classList.remove('id-lightbox-current');
     imageGallery[this.current].classList.add('id-lightbox-current');
   };
+
+  if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports = IDLightbox;
+  } else {
+    window.IDLightbox = IDLightbox;
+  }
 })();
