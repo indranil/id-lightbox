@@ -1,13 +1,17 @@
 (function() {
+
 this.IDLightbox = function(elems) {
-  this.current = -1;
   this.elems = document.querySelectorAll(elems);
-  this.imgArray = new Array();
+  this.current = -1;
   
   this.overlay;
+  this.container;
   this.galId;
   
   this.clickHandler = this.clickHandler.bind(this);
+  this.destroy = this.destroy.bind(this);
+  this.nextImg = this.nextImg.bind(this);
+  this.prevImg = this.prevImg.bind(this);
   
   // Click Handlers
   for (let i=0; i<this.elems.length; i++) {
@@ -15,20 +19,31 @@ this.IDLightbox = function(elems) {
   }
   
   // let's go!
-  this.setupOverlay();
+  this.setupContentArea();
 };
 
-IDLightbox.prototype.setupOverlay = function () {
+IDLightbox.prototype.setupContentArea = function () {
   this.overlay = document.createElement('div');
   this.overlay.classList.add('id-lightbox-overlay');
+  
+  this.container = document.createElement('div');
+  this.container.classList.add('id-lightbox-container');
+  
   this.overlay.innerHTML = '<span class="id-lightbox-close"></span>';
+  
+  this.overlay.addEventListener('click', this.destroy);
+  this.overlay.querySelector('.id-lightbox-close')
+    .addEventListener('click', this.destroy);
 };
 
 IDLightbox.prototype.setupControls = function () {
-  let controls = '<span class="id-lightbox-next"></span><span classid-lightbox-prev"></span>';
-  this.overlay.innerHTML = this.overlay.innerHTML + controls;
+  let controls = '<span class="id-lightbox-next"></span><span class="id-lightbox-prev"></span>';
+  this.container.innerHTML += controls;
   
-  // set up the click handlers for the controls
+  this.container.querySelector('.id-lightbox-next')
+    .addEventListener('click', this.nextImg);
+  this.container.querySelector('.id-lightbox-prev')
+    .addEventListener('click', this.prevImg);
 };
 
 IDLightbox.prototype.clickHandler = function (e) {
@@ -40,38 +55,29 @@ IDLightbox.prototype.clickHandler = function (e) {
   if (this.galId) {
     const gallery = document.querySelectorAll('[rel='+this.galId+']');
     for (let i=0; i < gallery.length; i++) {
-      if (this.imgArray.indexOf(gallery[i].href) === -1) {
-        img = this.setupImage(gallery[i].href);
-        
-        // if current image, make it visible!
-        if (gallery[i] === e.target.href) {
-          img.classList.add('id-lightbox-current');
-          setTimeout(() => {
-            img.classList.add('visible');
-          }, 50);
-        }
-        
-        this.overlay.appendChild(img);
-        this.imgArray.push(gallery[i].href);
+      img = this.setupImage(gallery[i].href);
+      // if current image, make it visible!
+      if (gallery[i] === e.currentTarget) {
+        this.current = i;
+        img.classList.add('id-lightbox-current');
       }
+      this.container.appendChild(img);
+    }
+    
+    if (gallery.length > 1) {
+      this.setupControls();
     }
   } else {
+    this.current = 0;
     img = this.setupImage(e.target.href);
     img.classList.add('id-lightbox-current');
-    setTimeout(() => {
-      img.classList.add('visible');
-    }, 50);
-    
-    this.overlay.appendChild(img);
-    this.imgArray.push(e.target.href);
-  }
-    
-  if (this.imgArray.length > 1) {
-    this.setupControls();
+    this.container.appendChild(img);
   }
   
+  document.body.appendChild(this.container);
   document.body.appendChild(this.overlay);
   setTimeout(() => {
+    this.container.classList.add('visible');
     this.overlay.classList.add('visible');
   }, 50);
 };
@@ -83,9 +89,36 @@ IDLightbox.prototype.setupImage = function (imgSrc) {
   return img;
 };
 
-IDLightbox.prototype.destroy = function () {
-  this.current = -1;
-  this.imgArray = new Array();
+IDLightbox.prototype.destroy = function (e) {
+  e.preventDefault();
+  
+  console.log('here');
+  
   this.overlay.remove();
+  this.container.remove();
+  
+  this.setupContentArea();
 };
+
+IDLightbox.prototype.nextImg = function (e) {
+  e.preventDefault();
+  const imageGallery = this.container.querySelectorAll('.id-lightbox-image');
+  const currentImage = this.container.querySelector('.id-lightbox-current');
+  this.current = (this.current < imageGallery.length-1) ? this.current + 1 : 0;
+  
+  currentImage.classList.remove('id-lightbox-current');
+  imageGallery[this.current].classList.add('id-lightbox-current');
+};
+
+IDLightbox.prototype.prevImg = function (e) {
+  e.preventDefault();
+  
+  const imageGallery = this.container.querySelectorAll('.id-lightbox-image');
+  const currentImage = this.container.querySelector('.id-lightbox-current');
+  this.current = (this.current <= 0) ? imageGallery.length - 1 : this.current - 1;
+  
+  currentImage.classList.remove('id-lightbox-current');
+  imageGallery[this.current].classList.add('id-lightbox-current');
+};
+
 }());

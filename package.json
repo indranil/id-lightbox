@@ -5,6 +5,7 @@
   "description": "simple lightbox plugin with no dependencies",
   "keywords": [
     "lightbox",
+    "image",
     "no-dependencies"
   ],
   "repository": "https://github.com/indranil/id-lightbox",
