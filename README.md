@@ -2,7 +2,7 @@
 
 A simple easy to use lightbox solution that runs without any dependencies!
 
-**Under 1KB minified & Gzipped**
+**Under 1KB minified & Gzipped** (784 bytes)
 
 ### Getting Started
 
