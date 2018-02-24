@@ -1,6 +1,6 @@
 {
   "name": "id-lightbox",
-  "version": "0.4.2",
+  "version": "0.5.2",
   "main": "src/id-lightbox.js",
   "description": "simple lightbox plugin with no dependencies",
   "keywords": [
