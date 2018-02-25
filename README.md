@@ -28,10 +28,10 @@ https://cdn.jsdelivr.net/npm/id-lightbox/dist/id-lightbox.min.js
 
 #### Usage
 
-Finally, to use the script, just call this with any css selector that can be parsed by `querySelectorAll`.
+Finally, to use the script, just call this with any selector that can be parsed by `querySelectorAll`.
 
 ```
-var lighty = new IDLightbox('.image'); // where .image is the class of the a link tag
+var lighty = new IDLightbox('.image'); // where image is the class of the a link tag
 ```
 
 To create a gallery, simply add a `rel` tag to the anchors to group them together, for eg: `rel="gallery1"`
@@ -47,4 +47,5 @@ My main objective with this project was to create a tiny lightbox script with no
 ### Changelog
 
 **0.5.2**: Allowing both `require` and normal linking script file
+
 **0.4.2**: Initial Release
