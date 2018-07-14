@@ -46,6 +46,8 @@ My main objective with this project was to create a tiny lightbox script with no
 
 ### Changelog
 
+**0.5.4**: Fixed a small bug where images would not show if the `a` tag had a child and was not positioned well
+
 **0.5.3**: Cleaner Readme
 
 **0.5.2**: Allowing both `require` and normal linking script file

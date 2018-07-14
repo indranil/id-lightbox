@@ -50,7 +50,7 @@ IDLightbox.prototype.clickHandler = function (e) {
   e.preventDefault();
   let img;
   
-  this.galId = e.target.rel;
+  this.galId = e.currentTarget.rel;
   
   if (this.galId) {
     const gallery = document.querySelectorAll('[rel='+this.galId+']');
@@ -69,7 +69,7 @@ IDLightbox.prototype.clickHandler = function (e) {
     }
   } else {
     this.current = 0;
-    img = this.setupImage(e.target.href);
+    img = this.setupImage(e.currentTarget.href);
     img.classList.add('id-lightbox-current');
     this.container.appendChild(img);
   }
